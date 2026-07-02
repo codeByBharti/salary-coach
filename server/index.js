@@ -18,7 +18,13 @@ const app = express();
 app.use(helmet());
 app.use(compression());
 app.use(morgan('dev'));
-app.use(cors({ origin: '*' }));
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'https://salary-coach.vercel.app'
+  ],
+  credentials: true
+}))
 app.use(express.json({ limit: '10kb' }));
 
 // Mount routes
